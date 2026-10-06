@@ -1,0 +1,1872 @@
+{
+  "kind": "firestore#export",
+  "database": "(default)",
+  "data": [
+    {
+      "document": {
+        "name": "users/seed-owner-uid",
+        "fields": {
+          "uid": {
+            "stringValue": "seed-owner-uid"
+          },
+          "displayName": {
+            "stringValue": "Foodhut Demo Owner"
+          },
+          "email": {
+            "stringValue": "owner@foodhut.test"
+          },
+          "photoURL": {
+            "nullValue": null
+          },
+          "phone": {
+            "stringValue": "+919800000000"
+          },
+          "role": {
+            "stringValue": "customer"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "users/seed-owner-uid/addresses/seed-addr-1",
+        "fields": {
+          "id": {
+            "stringValue": "seed-addr-1"
+          },
+          "label": {
+            "stringValue": "Home"
+          },
+          "line1": {
+            "stringValue": "Flat 402, Green Residency"
+          },
+          "line2": {
+            "stringValue": "Near MG Road"
+          },
+          "city": {
+            "stringValue": "Bengaluru"
+          },
+          "postalCode": {
+            "stringValue": "560001"
+          },
+          "phone": {
+            "stringValue": "+919800000000"
+          },
+          "isDefault": {
+            "booleanValue": true
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/truffle-affairs",
+        "fields": {
+          "id": {
+            "stringValue": "truffle-affairs"
+          },
+          "name": {
+            "stringValue": "Truffle Affairs"
+          },
+          "description": {
+            "stringValue": "Wood-fired pizzas, hand-made pastas and a dessert counter worth saving room for. Sourdough is proofed for 48 hours."
+          },
+          "cuisines": {
+            "arrayValue": {
+              "values": [
+                {
+                  "stringValue": "Pizza"
+                },
+                {
+                  "stringValue": "Italian"
+                },
+                {
+                  "stringValue": "Desserts"
+                }
+              ]
+            }
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/cover-pizza-pasta.jpg"
+          },
+          "coverImageUrl": {
+            "stringValue": "/dishes/cover-pizza-pasta.jpg"
+          },
+          "rating": {
+            "doubleValue": 4.6
+          },
+          "ratingCount": {
+            "integerValue": "1284"
+          },
+          "deliveryTimeMinutes": {
+            "integerValue": "35"
+          },
+          "deliveryFee": {
+            "integerValue": "4900"
+          },
+          "priceLevel": {
+            "integerValue": "3"
+          },
+          "location": {
+            "mapValue": {
+              "fields": {
+                "area": {
+                  "stringValue": "Indiranagar"
+                },
+                "city": {
+                  "stringValue": "Bengaluru"
+                },
+                "landmark": {
+                  "stringValue": "12th Main"
+                }
+              }
+            }
+          },
+          "isOpen": {
+            "booleanValue": true
+          },
+          "isAcceptingOrders": {
+            "booleanValue": true
+          },
+          "isFeatured": {
+            "booleanValue": true
+          },
+          "ownerId": {
+            "stringValue": "seed-owner-uid"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/truffle-affairs/menu/ta-1",
+        "fields": {
+          "id": {
+            "stringValue": "ta-1"
+          },
+          "name": {
+            "stringValue": "Truffle Mushroom Pizza"
+          },
+          "description": {
+            "stringValue": "Wild mushrooms, truffle cream, mozzarella and a thyme oil drizzle on a thin crust."
+          },
+          "price": {
+            "integerValue": "54900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/truffle-mushroom-pizza.jpg"
+          },
+          "category": {
+            "stringValue": "Pizza"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.7
+          },
+          "ratingCount": {
+            "integerValue": "412"
+          },
+          "sortOrder": {
+            "integerValue": "1"
+          },
+          "restaurantId": {
+            "stringValue": "truffle-affairs"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/truffle-affairs/menu/ta-2",
+        "fields": {
+          "id": {
+            "stringValue": "ta-2"
+          },
+          "name": {
+            "stringValue": "Spicy Arrabbiata"
+          },
+          "description": {
+            "stringValue": "Slow-simmered San Marzano tomato, garlic, chilli and basil. Vegetarian."
+          },
+          "price": {
+            "integerValue": "42900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/spicy-arrabbiata.svg"
+          },
+          "category": {
+            "stringValue": "Pizza"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.4
+          },
+          "ratingCount": {
+            "integerValue": "288"
+          },
+          "sortOrder": {
+            "integerValue": "2"
+          },
+          "restaurantId": {
+            "stringValue": "truffle-affairs"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/truffle-affairs/menu/ta-3",
+        "fields": {
+          "id": {
+            "stringValue": "ta-3"
+          },
+          "name": {
+            "stringValue": "Chicken Pesto Penne"
+          },
+          "description": {
+            "stringValue": "Grilled chicken, basil pesto, cherry tomatoes and parmesan tossed in penne."
+          },
+          "price": {
+            "integerValue": "49900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/chicken-pesto-penne.jpg"
+          },
+          "category": {
+            "stringValue": "Pasta"
+          },
+          "isVeg": {
+            "booleanValue": false
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.6
+          },
+          "ratingCount": {
+            "integerValue": "331"
+          },
+          "sortOrder": {
+            "integerValue": "3"
+          },
+          "restaurantId": {
+            "stringValue": "truffle-affairs"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/truffle-affairs/menu/ta-4",
+        "fields": {
+          "id": {
+            "stringValue": "ta-4"
+          },
+          "name": {
+            "stringValue": "Alfredo Fettuccine"
+          },
+          "description": {
+            "stringValue": "Classic cream and parmesan sauce with fresh cracked pepper."
+          },
+          "price": {
+            "integerValue": "38900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/alfredo-fettuccine.jpg"
+          },
+          "category": {
+            "stringValue": "Pasta"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.3
+          },
+          "ratingCount": {
+            "integerValue": "197"
+          },
+          "sortOrder": {
+            "integerValue": "4"
+          },
+          "restaurantId": {
+            "stringValue": "truffle-affairs"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/truffle-affairs/menu/ta-5",
+        "fields": {
+          "id": {
+            "stringValue": "ta-5"
+          },
+          "name": {
+            "stringValue": "Tiramisu"
+          },
+          "description": {
+            "stringValue": "Espresso-soaked savoiardi, mascarpone cream and cocoa. Made fresh every morning."
+          },
+          "price": {
+            "integerValue": "29900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/tiramisu.jpg"
+          },
+          "category": {
+            "stringValue": "Desserts"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.8
+          },
+          "ratingCount": {
+            "integerValue": "256"
+          },
+          "sortOrder": {
+            "integerValue": "5"
+          },
+          "restaurantId": {
+            "stringValue": "truffle-affairs"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/saffron-junction",
+        "fields": {
+          "id": {
+            "stringValue": "saffron-junction"
+          },
+          "name": {
+            "stringValue": "Saffron Junction"
+          },
+          "description": {
+            "stringValue": "North Indian classics done properly — hand-ground masalas, slow-cooked curries and oven-fired naan."
+          },
+          "cuisines": {
+            "arrayValue": {
+              "values": [
+                {
+                  "stringValue": "North Indian"
+                },
+                {
+                  "stringValue": "Mughlai"
+                },
+                {
+                  "stringValue": "Biryani"
+                }
+              ]
+            }
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/cover-north-indian.jpg"
+          },
+          "coverImageUrl": {
+            "stringValue": "/dishes/cover-north-indian.jpg"
+          },
+          "rating": {
+            "doubleValue": 4.5
+          },
+          "ratingCount": {
+            "integerValue": "2140"
+          },
+          "deliveryTimeMinutes": {
+            "integerValue": "40"
+          },
+          "deliveryFee": {
+            "integerValue": "3900"
+          },
+          "priceLevel": {
+            "integerValue": "2"
+          },
+          "location": {
+            "mapValue": {
+              "fields": {
+                "area": {
+                  "stringValue": "Koramangala"
+                },
+                "city": {
+                  "stringValue": "Bengaluru"
+                },
+                "landmark": {
+                  "stringValue": "80 Feet Road"
+                }
+              }
+            }
+          },
+          "isOpen": {
+            "booleanValue": true
+          },
+          "isAcceptingOrders": {
+            "booleanValue": true
+          },
+          "isFeatured": {
+            "booleanValue": true
+          },
+          "ownerId": {
+            "stringValue": "seed-owner-uid"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/saffron-junction/menu/sj-1",
+        "fields": {
+          "id": {
+            "stringValue": "sj-1"
+          },
+          "name": {
+            "stringValue": "Butter Chicken"
+          },
+          "description": {
+            "stringValue": "Tandoori chicken in a rich tomato and cashew gravy finished with white butter."
+          },
+          "price": {
+            "integerValue": "44900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/butter-chicken.jpg"
+          },
+          "category": {
+            "stringValue": "Curries"
+          },
+          "isVeg": {
+            "booleanValue": false
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.8
+          },
+          "ratingCount": {
+            "integerValue": "892"
+          },
+          "sortOrder": {
+            "integerValue": "1"
+          },
+          "restaurantId": {
+            "stringValue": "saffron-junction"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/saffron-junction/menu/sj-2",
+        "fields": {
+          "id": {
+            "stringValue": "sj-2"
+          },
+          "name": {
+            "stringValue": "Paneer Butter Masala"
+          },
+          "description": {
+            "stringValue": "Soft paneer cubes in a mildly sweet tomato gravy with a cream swirl."
+          },
+          "price": {
+            "integerValue": "39900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/paneer-butter-masala.svg"
+          },
+          "category": {
+            "stringValue": "Curries"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.7
+          },
+          "ratingCount": {
+            "integerValue": "703"
+          },
+          "sortOrder": {
+            "integerValue": "2"
+          },
+          "restaurantId": {
+            "stringValue": "saffron-junction"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/saffron-junction/menu/sj-3",
+        "fields": {
+          "id": {
+            "stringValue": "sj-3"
+          },
+          "name": {
+            "stringValue": "Dal Makhani"
+          },
+          "description": {
+            "stringValue": "Black urad simmered overnight on low coals with butter and cream."
+          },
+          "price": {
+            "integerValue": "29900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/dal-makhani.jpg"
+          },
+          "category": {
+            "stringValue": "Curries"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.6
+          },
+          "ratingCount": {
+            "integerValue": "512"
+          },
+          "sortOrder": {
+            "integerValue": "3"
+          },
+          "restaurantId": {
+            "stringValue": "saffron-junction"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/saffron-junction/menu/sj-4",
+        "fields": {
+          "id": {
+            "stringValue": "sj-4"
+          },
+          "name": {
+            "stringValue": "Hyderabadi Dum Biryani"
+          },
+          "description": {
+            "stringValue": "Sealed-pot biryani with long-grain basmati, saffron and fried onions."
+          },
+          "price": {
+            "integerValue": "46900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/hyderabadi-dum-biryani.jpg"
+          },
+          "category": {
+            "stringValue": "Biryani"
+          },
+          "isVeg": {
+            "booleanValue": false
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.9
+          },
+          "ratingCount": {
+            "integerValue": "1044"
+          },
+          "sortOrder": {
+            "integerValue": "4"
+          },
+          "restaurantId": {
+            "stringValue": "saffron-junction"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/saffron-junction/menu/sj-5",
+        "fields": {
+          "id": {
+            "stringValue": "sj-5"
+          },
+          "name": {
+            "stringValue": "Garlic Naan"
+          },
+          "description": {
+            "stringValue": "Tandoor-baked, brushed with garlic butter and coriander."
+          },
+          "price": {
+            "integerValue": "8900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/garlic-naan.jpg"
+          },
+          "category": {
+            "stringValue": "Breads"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.5
+          },
+          "ratingCount": {
+            "integerValue": "620"
+          },
+          "sortOrder": {
+            "integerValue": "5"
+          },
+          "restaurantId": {
+            "stringValue": "saffron-junction"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/wok-theory",
+        "fields": {
+          "id": {
+            "stringValue": "wok-theory"
+          },
+          "name": {
+            "stringValue": "Wok Theory"
+          },
+          "description": {
+            "stringValue": "Indo-Chinese wok dishes with a proper flame. Everything is tossed to order, so it arrives hot."
+          },
+          "cuisines": {
+            "arrayValue": {
+              "values": [
+                {
+                  "stringValue": "Chinese"
+                },
+                {
+                  "stringValue": "Fast Food"
+                }
+              ]
+            }
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/cover-chinese.jpg"
+          },
+          "coverImageUrl": {
+            "stringValue": "/dishes/cover-chinese.jpg"
+          },
+          "rating": {
+            "doubleValue": 4.3
+          },
+          "ratingCount": {
+            "integerValue": "1876"
+          },
+          "deliveryTimeMinutes": {
+            "integerValue": "28"
+          },
+          "deliveryFee": {
+            "integerValue": "2900"
+          },
+          "priceLevel": {
+            "integerValue": "2"
+          },
+          "location": {
+            "mapValue": {
+              "fields": {
+                "area": {
+                  "stringValue": "HSR Layout"
+                },
+                "city": {
+                  "stringValue": "Bengaluru"
+                },
+                "landmark": {
+                  "stringValue": "Sector 2"
+                }
+              }
+            }
+          },
+          "isOpen": {
+            "booleanValue": true
+          },
+          "isAcceptingOrders": {
+            "booleanValue": true
+          },
+          "isFeatured": {
+            "booleanValue": false
+          },
+          "ownerId": {
+            "stringValue": "seed-owner-uid"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/wok-theory/menu/wt-1",
+        "fields": {
+          "id": {
+            "stringValue": "wt-1"
+          },
+          "name": {
+            "stringValue": "Burnt Garlic Noodles"
+          },
+          "description": {
+            "stringValue": "Wok-tossed noodles with charred garlic, spring onion and a dark soy glaze."
+          },
+          "price": {
+            "integerValue": "27900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/burnt-garlic-noodles.jpg"
+          },
+          "category": {
+            "stringValue": "Noodles"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.4
+          },
+          "ratingCount": {
+            "integerValue": "534"
+          },
+          "sortOrder": {
+            "integerValue": "1"
+          },
+          "restaurantId": {
+            "stringValue": "wok-theory"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/wok-theory/menu/wt-2",
+        "fields": {
+          "id": {
+            "stringValue": "wt-2"
+          },
+          "name": {
+            "stringValue": "Chicken 65"
+          },
+          "description": {
+            "stringValue": "Crisp fried chicken with curry leaf, red chilli and a squeeze of lime."
+          },
+          "price": {
+            "integerValue": "34900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/chicken-65.jpg"
+          },
+          "category": {
+            "stringValue": "Starters"
+          },
+          "isVeg": {
+            "booleanValue": false
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.6
+          },
+          "ratingCount": {
+            "integerValue": "401"
+          },
+          "sortOrder": {
+            "integerValue": "2"
+          },
+          "restaurantId": {
+            "stringValue": "wok-theory"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/wok-theory/menu/wt-3",
+        "fields": {
+          "id": {
+            "stringValue": "wt-3"
+          },
+          "name": {
+            "stringValue": "Chilli Garlic Paneer"
+          },
+          "description": {
+            "stringValue": "Soft paneer tossed with garlic, green chilli and spring onion."
+          },
+          "price": {
+            "integerValue": "31900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/chilli-garlic-paneer.jpg"
+          },
+          "category": {
+            "stringValue": "Starters"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.2
+          },
+          "ratingCount": {
+            "integerValue": "288"
+          },
+          "sortOrder": {
+            "integerValue": "3"
+          },
+          "restaurantId": {
+            "stringValue": "wok-theory"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/wok-theory/menu/wt-4",
+        "fields": {
+          "id": {
+            "stringValue": "wt-4"
+          },
+          "name": {
+            "stringValue": "Veg Manchurian"
+          },
+          "description": {
+            "stringValue": "Golden-fried vegetable dumplings in a mildly spicy soy glaze."
+          },
+          "price": {
+            "integerValue": "28900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/veg-manchurian.jpg"
+          },
+          "category": {
+            "stringValue": "Starters"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.1
+          },
+          "ratingCount": {
+            "integerValue": "356"
+          },
+          "sortOrder": {
+            "integerValue": "4"
+          },
+          "restaurantId": {
+            "stringValue": "wok-theory"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/smoke-and-salt",
+        "fields": {
+          "id": {
+            "stringValue": "smoke-and-salt"
+          },
+          "name": {
+            "stringValue": "Smoke & Salt"
+          },
+          "description": {
+            "stringValue": "Smash burgers and loaded fries. The patties are pressed to order — expect a short wait."
+          },
+          "cuisines": {
+            "arrayValue": {
+              "values": [
+                {
+                  "stringValue": "Burgers"
+                },
+                {
+                  "stringValue": "Fast Food"
+                },
+                {
+                  "stringValue": "American"
+                }
+              ]
+            }
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/cover-burgers.jpg"
+          },
+          "coverImageUrl": {
+            "stringValue": "/dishes/cover-burgers.jpg"
+          },
+          "rating": {
+            "doubleValue": 4.4
+          },
+          "ratingCount": {
+            "integerValue": "3201"
+          },
+          "deliveryTimeMinutes": {
+            "integerValue": "25"
+          },
+          "deliveryFee": {
+            "integerValue": "0"
+          },
+          "priceLevel": {
+            "integerValue": "2"
+          },
+          "location": {
+            "mapValue": {
+              "fields": {
+                "area": {
+                  "stringValue": "Jayanagar"
+                },
+                "city": {
+                  "stringValue": "Bengaluru"
+                },
+                "landmark": {
+                  "stringValue": "4th Block"
+                }
+              }
+            }
+          },
+          "isOpen": {
+            "booleanValue": true
+          },
+          "isAcceptingOrders": {
+            "booleanValue": true
+          },
+          "isFeatured": {
+            "booleanValue": true
+          },
+          "ownerId": {
+            "stringValue": "seed-owner-uid"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/smoke-and-salt/menu/ss-1",
+        "fields": {
+          "id": {
+            "stringValue": "ss-1"
+          },
+          "name": {
+            "stringValue": "Classic Smash Burger"
+          },
+          "description": {
+            "stringValue": "Double smashed beef, American cheese, pickles and house sauce in a brioche bun."
+          },
+          "price": {
+            "integerValue": "32900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/classic-smash-burger.jpg"
+          },
+          "category": {
+            "stringValue": "Burgers"
+          },
+          "isVeg": {
+            "booleanValue": false
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.7
+          },
+          "ratingCount": {
+            "integerValue": "1104"
+          },
+          "sortOrder": {
+            "integerValue": "1"
+          },
+          "restaurantId": {
+            "stringValue": "smoke-and-salt"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/smoke-and-salt/menu/ss-2",
+        "fields": {
+          "id": {
+            "stringValue": "ss-2"
+          },
+          "name": {
+            "stringValue": "Crispy Chicken Burger"
+          },
+          "description": {
+            "stringValue": "Buttermilk-brined fried chicken, slaw and chipotle mayo."
+          },
+          "price": {
+            "integerValue": "31900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/crispy-chicken-burger.jpg"
+          },
+          "category": {
+            "stringValue": "Burgers"
+          },
+          "isVeg": {
+            "booleanValue": false
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.5
+          },
+          "ratingCount": {
+            "integerValue": "742"
+          },
+          "sortOrder": {
+            "integerValue": "2"
+          },
+          "restaurantId": {
+            "stringValue": "smoke-and-salt"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/smoke-and-salt/menu/ss-3",
+        "fields": {
+          "id": {
+            "stringValue": "ss-3"
+          },
+          "name": {
+            "stringValue": "Mushroom Swiss Burger"
+          },
+          "description": {
+            "stringValue": "Griddled mushrooms, melted Swiss and truffle aioli. Vegetarian."
+          },
+          "price": {
+            "integerValue": "29900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/mushroom-swiss-burger.jpg"
+          },
+          "category": {
+            "stringValue": "Burgers"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.4
+          },
+          "ratingCount": {
+            "integerValue": "389"
+          },
+          "sortOrder": {
+            "integerValue": "3"
+          },
+          "restaurantId": {
+            "stringValue": "smoke-and-salt"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/smoke-and-salt/menu/ss-4",
+        "fields": {
+          "id": {
+            "stringValue": "ss-4"
+          },
+          "name": {
+            "stringValue": "Loaded Cheese Fries"
+          },
+          "description": {
+            "stringValue": "Skin-on fries, molten cheese sauce, jalapeños and spring onion."
+          },
+          "price": {
+            "integerValue": "24900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/loaded-cheese-fries.jpg"
+          },
+          "category": {
+            "stringValue": "Sides"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.6
+          },
+          "ratingCount": {
+            "integerValue": "512"
+          },
+          "sortOrder": {
+            "integerValue": "4"
+          },
+          "restaurantId": {
+            "stringValue": "smoke-and-salt"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/kadak-cafe",
+        "fields": {
+          "id": {
+            "stringValue": "kadak-cafe"
+          },
+          "name": {
+            "stringValue": "Kadak Cafe"
+          },
+          "description": {
+            "stringValue": "South Indian filter coffee, crisp dosas and idlis batter fermented the traditional way."
+          },
+          "cuisines": {
+            "arrayValue": {
+              "values": [
+                {
+                  "stringValue": "South Indian"
+                },
+                {
+                  "stringValue": "Dosa"
+                },
+                {
+                  "stringValue": "Coffee"
+                }
+              ]
+            }
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/cover-south-indian.jpg"
+          },
+          "coverImageUrl": {
+            "stringValue": "/dishes/cover-south-indian.jpg"
+          },
+          "rating": {
+            "doubleValue": 4.2
+          },
+          "ratingCount": {
+            "integerValue": "1544"
+          },
+          "deliveryTimeMinutes": {
+            "integerValue": "22"
+          },
+          "deliveryFee": {
+            "integerValue": "1900"
+          },
+          "priceLevel": {
+            "integerValue": "1"
+          },
+          "location": {
+            "mapValue": {
+              "fields": {
+                "area": {
+                  "stringValue": "Malleshwaram"
+                },
+                "city": {
+                  "stringValue": "Bengaluru"
+                },
+                "landmark": {
+                  "stringValue": "8th Cross"
+                }
+              }
+            }
+          },
+          "isOpen": {
+            "booleanValue": false
+          },
+          "isAcceptingOrders": {
+            "booleanValue": false
+          },
+          "isFeatured": {
+            "booleanValue": false
+          },
+          "ownerId": {
+            "stringValue": "seed-owner-uid"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/kadak-cafe/menu/kc-1",
+        "fields": {
+          "id": {
+            "stringValue": "kc-1"
+          },
+          "name": {
+            "stringValue": "Masala Dosa"
+          },
+          "description": {
+            "stringValue": "Crisp rice and urad dosa with potato palya, coconut chutney and sambar."
+          },
+          "price": {
+            "integerValue": "15900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/masala-dosa.jpg"
+          },
+          "category": {
+            "stringValue": "Dosas"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.4
+          },
+          "ratingCount": {
+            "integerValue": "623"
+          },
+          "sortOrder": {
+            "integerValue": "1"
+          },
+          "restaurantId": {
+            "stringValue": "kadak-cafe"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/kadak-cafe/menu/kc-2",
+        "fields": {
+          "id": {
+            "stringValue": "kc-2"
+          },
+          "name": {
+            "stringValue": "Ghee Roast Dosa"
+          },
+          "description": {
+            "stringValue": "Paper-thin dosa brushed with cow ghee and served with podi chutney."
+          },
+          "price": {
+            "integerValue": "19900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/ghee-roast-dosa.jpg"
+          },
+          "category": {
+            "stringValue": "Dosas"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.6
+          },
+          "ratingCount": {
+            "integerValue": "411"
+          },
+          "sortOrder": {
+            "integerValue": "2"
+          },
+          "restaurantId": {
+            "stringValue": "kadak-cafe"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/kadak-cafe/menu/kc-3",
+        "fields": {
+          "id": {
+            "stringValue": "kc-3"
+          },
+          "name": {
+            "stringValue": "Idli Vada Combo"
+          },
+          "description": {
+            "stringValue": "Two steamed idlis and a golden medu vada with chutney and sambar."
+          },
+          "price": {
+            "integerValue": "13900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/idli-vada-combo.jpg"
+          },
+          "category": {
+            "stringValue": "Tiffin"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.3
+          },
+          "ratingCount": {
+            "integerValue": "289"
+          },
+          "sortOrder": {
+            "integerValue": "3"
+          },
+          "restaurantId": {
+            "stringValue": "kadak-cafe"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/kadak-cafe/menu/kc-4",
+        "fields": {
+          "id": {
+            "stringValue": "kc-4"
+          },
+          "name": {
+            "stringValue": "Filter Coffee"
+          },
+          "description": {
+            "stringValue": "Classic decoction and boiled milk poured between tumbler and davara."
+          },
+          "price": {
+            "integerValue": "5900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/filter-coffee.jpg"
+          },
+          "category": {
+            "stringValue": "Beverages"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.7
+          },
+          "ratingCount": {
+            "integerValue": "802"
+          },
+          "sortOrder": {
+            "integerValue": "4"
+          },
+          "restaurantId": {
+            "stringValue": "kadak-cafe"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/green-bowl",
+        "fields": {
+          "id": {
+            "stringValue": "green-bowl"
+          },
+          "name": {
+            "stringValue": "Green Bowl"
+          },
+          "description": {
+            "stringValue": "Grain bowls, salads and cold-press juice. Mostly plant-based, with a few protein add-ons."
+          },
+          "cuisines": {
+            "arrayValue": {
+              "values": [
+                {
+                  "stringValue": "Healthy"
+                },
+                {
+                  "stringValue": "Vegan"
+                },
+                {
+                  "stringValue": "Salads"
+                }
+              ]
+            }
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/cover-healthy-bowl.svg"
+          },
+          "coverImageUrl": {
+            "stringValue": "/dishes/cover-healthy-bowl.svg"
+          },
+          "rating": {
+            "doubleValue": 4.4
+          },
+          "ratingCount": {
+            "integerValue": "612"
+          },
+          "deliveryTimeMinutes": {
+            "integerValue": "30"
+          },
+          "deliveryFee": {
+            "integerValue": "0"
+          },
+          "priceLevel": {
+            "integerValue": "2"
+          },
+          "location": {
+            "mapValue": {
+              "fields": {
+                "area": {
+                  "stringValue": "Bellandur"
+                },
+                "city": {
+                  "stringValue": "Bengaluru"
+                },
+                "landmark": {
+                  "stringValue": "Ecospace"
+                }
+              }
+            }
+          },
+          "isOpen": {
+            "booleanValue": true
+          },
+          "isAcceptingOrders": {
+            "booleanValue": true
+          },
+          "isFeatured": {
+            "booleanValue": true
+          },
+          "ownerId": {
+            "stringValue": "seed-owner-uid"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/green-bowl/menu/gb-1",
+        "fields": {
+          "id": {
+            "stringValue": "gb-1"
+          },
+          "name": {
+            "stringValue": "Quinoa Rainbow Bowl"
+          },
+          "description": {
+            "stringValue": "Quinoa, roasted pumpkin, avocado, chickpeas, feta and a lemon tahini dressing."
+          },
+          "price": {
+            "integerValue": "38900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/quinoa-rainbow-bowl.jpg"
+          },
+          "category": {
+            "stringValue": "Bowls"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.6
+          },
+          "ratingCount": {
+            "integerValue": "288"
+          },
+          "sortOrder": {
+            "integerValue": "1"
+          },
+          "restaurantId": {
+            "stringValue": "green-bowl"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/green-bowl/menu/gb-2",
+        "fields": {
+          "id": {
+            "stringValue": "gb-2"
+          },
+          "name": {
+            "stringValue": "Grilled Chicken Caesar"
+          },
+          "description": {
+            "stringValue": "Romaine, shaved parmesan, croutons and grilled chicken breast."
+          },
+          "price": {
+            "integerValue": "42900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/grilled-chicken-caesar.jpg"
+          },
+          "category": {
+            "stringValue": "Salads"
+          },
+          "isVeg": {
+            "booleanValue": false
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.5
+          },
+          "ratingCount": {
+            "integerValue": "194"
+          },
+          "sortOrder": {
+            "integerValue": "2"
+          },
+          "restaurantId": {
+            "stringValue": "green-bowl"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    },
+    {
+      "document": {
+        "name": "restaurants/green-bowl/menu/gb-3",
+        "fields": {
+          "id": {
+            "stringValue": "gb-3"
+          },
+          "name": {
+            "stringValue": "Cold-Press Green Juice"
+          },
+          "description": {
+            "stringValue": "Spinach, cucumber, green apple, ginger and lemon. No added sugar."
+          },
+          "price": {
+            "integerValue": "22900"
+          },
+          "imageUrl": {
+            "stringValue": "/dishes/cold-press-green-juice.jpg"
+          },
+          "category": {
+            "stringValue": "Juices"
+          },
+          "isVeg": {
+            "booleanValue": true
+          },
+          "isAvailable": {
+            "booleanValue": true
+          },
+          "rating": {
+            "doubleValue": 4.3
+          },
+          "ratingCount": {
+            "integerValue": "121"
+          },
+          "sortOrder": {
+            "integerValue": "3"
+          },
+          "restaurantId": {
+            "stringValue": "green-bowl"
+          },
+          "createdAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          },
+          "updatedAt": {
+            "timestampValue": "2026-10-02T15:07:55.400Z"
+          }
+        },
+        "createTime": "2026-10-02T15:07:55.400Z",
+        "updateTime": "2026-10-02T15:07:55.400Z"
+      }
+    }
+  ]
+}

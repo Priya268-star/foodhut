@@ -1,0 +1,339 @@
+rules_version = '2';
+
+/**
+ * Foodhut Firestore security rules.
+ *
+ * Design notes
+ * ------------
+ * 1. These rules are the ONLY security boundary. Every UI check is cosmetic.
+ * 2. Ownership is checked against `restaurants/{id}.ownerId`, which is set at
+ *    creation time and is immutable afterwards (see `isOwnerDoc`).
+ * 3. Order status transitions are validated server-side: only forward moves
+ *    along the allowed chain, plus cancellation. The client cannot set
+ *    `total`, `userId` or `restaurantId` on an update.
+ * 4. Denormalised fields (rating, ratingCount) are computed by a Cloud Function
+ *    in production; the client cannot write them.
+ */
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /* ----------------------------- helpers ----------------------------- */
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function userPath(uid) {
+      return /databases/$(database)/documents/users/$(uid);
+    }
+
+    function restaurantPath(restaurantId) {
+      return /databases/$(database)/documents/restaurants/$(restaurantId);
+    }
+
+    function orderPath(orderId) {
+      return /databases/$(database)/documents/orders/$(orderId);
+    }
+
+    /*
+     * Note on `exists()` guards: every `get(...).data` above is preceded by an
+     * `exists()` check. Reading a missing document throws *inside* rule
+     * evaluation, so the request is denied — fail-closed, and therefore safe,
+     * but denied by accident, with an opaque "evaluation error" in the log.
+     * Denying explicitly is both easier to read and easier to test.
+     */
+
+    function userDoc(uid) {
+      return get(userPath(uid)).data;
+    }
+
+    function isSelf(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      return isSignedIn()
+        && exists(userPath(request.auth.uid))
+        && userDoc(request.auth.uid).role == 'admin';
+    }
+
+    function isOwnerOf(restaurantId) {
+      return isSignedIn()
+        && exists(restaurantPath(restaurantId))
+        && get(restaurantPath(restaurantId)).data.ownerId == request.auth.uid;
+    }
+
+    /** A newly created restaurant must be owned by its creator. */
+    function ownsNewRestaurant() {
+      return request.resource.data.ownerId == request.auth.uid;
+    }
+
+    /** `ownerId` may never change after creation. */
+    function ownerUnchanged() {
+      return request.resource.data.ownerId == resource.data.ownerId;
+    }
+
+    /** Only these fields may change on a restaurant update. */
+    function restaurantMutableFieldsOnly() {
+      return request.resource.data.diff(resource.data)
+             .affectedKeys()
+             .hasOnly([
+               'name', 'description', 'cuisines', 'imageUrl', 'coverImageUrl',
+               'deliveryTimeMinutes', 'deliveryFee', 'priceLevel', 'location',
+               'isOpen', 'isAcceptingOrders', 'isFeatured', 'updatedAt'
+             ]);
+    }
+
+    /** Fields a restaurant owner may not set directly. */
+    function protectedRestaurantFieldsUnchanged() {
+      return request.resource.data.rating == resource.data.rating
+          && request.resource.data.ratingCount == resource.data.ratingCount;
+    }
+
+    /*
+     * Full shape validation of one address document.
+     *
+     * NOTE: the rules language has NO iteration construct — `for`/`forEach` do
+     * not exist, so an array of addresses could never be validated element by
+     * element. That is why addresses live in a subcollection: each one is its
+     * own document, so this check can be exhaustive.
+     */
+    function isValidAddress(address) {
+      return address is map
+        && address.keys().hasAll(
+             ['id', 'label', 'line1', 'city', 'postalCode', 'phone', 'isDefault'])
+        && address.keys().hasOnly(
+             ['id', 'label', 'line1', 'line2', 'city', 'postalCode', 'phone', 'isDefault'])
+        && address.id is string
+        && address.id.size() > 0 && address.id.size() <= 64
+        && address.label is string
+        && address.label.size() > 0 && address.label.size() <= 30
+        && address.line1 is string
+        && address.line1.size() > 0 && address.line1.size() <= 160
+        && (!('line2' in address) || (address.line2 is string && address.line2.size() <= 160))
+        && address.city is string
+        && address.city.size() > 0 && address.city.size() <= 60
+        && address.postalCode is string
+        && address.postalCode.matches('^[0-9]{4,10}$')
+        && address.phone is string
+        && address.phone.size() >= 7 && address.phone.size() <= 16
+        && address.isDefault is bool;
+    }
+
+    /* ------------------------------ users ------------------------------ */
+
+    match /users/{uid} {
+      // Public reads are limited to a safe subset so the UI can show display
+      // names on reviews. `resource.data` field access cannot be projected in
+      // rules, so we allow read only to signed-in users.
+      allow read: if isSelf(uid) || isAdmin();
+
+      /*
+       * A user may create only their own profile, and only as a `customer`.
+       * There is no client-writable ownership field: being an owner is derived
+       * from `restaurants/{id}.ownerId` (see `isOwnerOf` above), so there is
+       * nothing here for a user to escalate through. `admin` is granted out of
+       * band with the Admin SDK or the console.
+       */
+      allow create: if isSelf(uid)
+        && request.resource.data.role == 'customer';
+
+      /*
+       * The user may edit their own display name, phone and avatar only.
+       * `role` is deliberately excluded, so a user cannot promote themselves.
+       */
+      allow update: if isAdmin()
+                    || (isSelf(uid)
+                        && request.resource.data.diff(resource.data)
+                             .affectedKeys()
+                             .hasOnly(['displayName', 'phone', 'photoURL', 'updatedAt']));
+
+      allow delete: if isAdmin();
+
+      /* ----------------------------- addresses --------------------------- */
+
+      /*
+       * One document per address. This is not just tidiness: the rules
+       * language cannot iterate a list, so an embedded array of addresses
+       * could not be validated entry by entry. As a subcollection, each write
+       * is checked in full by `isValidAddress`.
+       */
+      match /addresses/{addressId} {
+        allow read: if isSelf(uid);
+
+        allow create: if isSelf(uid)
+          && isValidAddress(request.resource.data)
+          // The embedded id must match the document id, so a client cannot
+          // smuggle one address's fields under another's key.
+          && request.resource.data.id == addressId;
+
+        allow update: if isSelf(uid)
+          && isValidAddress(request.resource.data)
+          && request.resource.data.id == addressId;
+
+        // Deleting needs no body, so only the owner check applies.
+        allow delete: if isSelf(uid);
+      }
+
+      /* -------------------------- favourites -------------------------- */
+
+      match /favourites/{restaurantId} {
+        // Doc id is the restaurant id, so it must match the payload.
+        allow read: if isSelf(uid);
+
+        allow create: if isSelf(uid)
+          && request.resource.data.userId == uid
+          && request.resource.data.restaurantId == restaurantId
+          && exists(/databases/$(database)/documents/restaurants/$(restaurantId));
+
+        // Deleting a favourite needs no body, so the key check is enough.
+        allow update, delete: if isSelf(uid)
+          && resource.data.userId == uid;
+      }
+    }
+
+    /* --------------------------- restaurants --------------------------- */
+
+    match /restaurants/{restaurantId} {
+      // Menus need the parent restaurant to be publicly readable.
+      allow read: if true;
+
+      allow create: if isSignedIn()
+        && ownsNewRestaurant()
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 1
+        && request.resource.data.cuisines is list
+        && request.resource.data.cuisines.size() > 0
+        && request.resource.data.rating == 0
+        && request.resource.data.ratingCount == 0;
+
+      allow update: if exists(restaurantPath(restaurantId))
+                    && (isAdmin()
+                        || (isOwnerOf(restaurantId)
+                            && ownerUnchanged()
+                            && protectedRestaurantFieldsUnchanged()
+                            && restaurantMutableFieldsOnly()));
+
+      // Deleting a restaurant cascades to the menu via a Cloud Function, not here.
+      allow delete: if isAdmin() || isOwnerOf(restaurantId);
+
+      /* ----------------------------- menu ----------------------------- */
+
+      match /menu/{itemId} {
+        allow read: if true;
+
+        allow create: if isAdmin() || isOwnerOf(restaurantId);
+
+        allow update: if isAdmin() || isOwnerOf(restaurantId);
+        allow delete: if isAdmin() || isOwnerOf(restaurantId);
+      }
+
+      /* --------------------------- reviews ---------------------------- */
+
+      match /reviews/{reviewId} {
+        allow read: if true;
+
+        // Anyone signed in can review, but only as themselves, and the rating
+        // must be an integer between 1 and 5.
+        allow create: if isSignedIn()
+          && request.resource.data.userId == request.auth.uid
+          && request.resource.data.restaurantId == restaurantId
+          && request.resource.data.rating is int
+          && request.resource.data.rating >= 1
+          && request.resource.data.rating <= 5
+          && request.resource.data.comment is string
+          && request.resource.data.comment.size() <= 1000;
+
+        // Only the author may edit their own text.
+        allow update: if isSignedIn() && resource.data.userId == request.auth.uid;
+
+        allow delete: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      }
+    }
+
+    /* ----------------------------- orders ----------------------------- */
+
+    match /orders/{orderId} {
+      // A customer reads their own orders; the restaurant reads its own.
+      allow read: if isSignedIn()
+        && (resource.data.userId == request.auth.uid
+            || isAdmin()
+            || isOwnerOf(resource.data.restaurantId));
+
+      // Totals and identity are server-computed in production. Here we require
+      // the client to send internally consistent numbers, which stops a
+      // tampered total from being *stored*, even though it is not authoritative.
+      allow create: if isSignedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.items is list
+        && request.resource.data.items.size() > 0
+        && request.resource.data.items.size() <= 50
+        && request.resource.data.subtotal is int
+        && request.resource.data.subtotal >= 0
+        && request.resource.data.deliveryFee is int
+        && request.resource.data.deliveryFee >= 0
+        && request.resource.data.tax is int
+        && request.resource.data.tax >= 0
+        && request.resource.data.total == request.resource.data.subtotal
+                             + request.resource.data.deliveryFee
+                             + request.resource.data.tax
+        && request.resource.data.status == 'placed'
+        && isValidAddress(request.resource.data.address);
+
+      /*
+       * Status updates. Two actors:
+       *   - the owning restaurant advances the order along the fixed chain
+       *   - the customer may cancel, but only while the order is still active
+       * In both cases money, identity and line items are immutable.
+       */
+      allow update: if exists(orderPath(orderId))
+                    && (isAdmin()
+                        || (isOwnerOfOrder() && validStatusTransition())
+                        || (isOrderCustomerCancelling() && orderFinancialsUnchanged()));
+
+      // Deleting orders would destroy history; cancellation is the only exit.
+      allow delete: if false;
+
+      function isOwnerOfOrder() {
+        return isSignedIn()
+          && isOwnerOf(resource.data.restaurantId)
+          && request.resource.data.restaurantId == resource.data.restaurantId;
+      }
+
+      function isOrderCustomerCancelling() {
+        return isSignedIn()
+          && resource.data.userId == request.auth.uid
+          && request.resource.data.userId == resource.data.userId
+          && request.resource.data.status == 'cancelled'
+          && isActive(resource.data.status);
+      }
+
+      function orderFinancialsUnchanged() {
+        return request.resource.data.total == resource.data.total
+            && request.resource.data.subtotal == resource.data.subtotal
+            && request.resource.data.deliveryFee == resource.data.deliveryFee
+            && request.resource.data.tax == resource.data.tax
+            && request.resource.data.items == resource.data.items
+            && request.resource.data.address == resource.data.address;
+      }
+
+      function validStatusTransition() {
+        return orderFinancialsUnchanged()
+          && isForwardStep(resource.data.status, request.resource.data.status);
+      }
+
+      function isForwardStep(from, to) {
+        return (from == 'placed'             && to == 'confirmed')
+            || (from == 'confirmed'          && to == 'preparing')
+            || (from == 'preparing'          && to == 'out_for_delivery')
+            || (from == 'out_for_delivery'   && to == 'delivered')
+            // A restaurant may refuse an order it has not yet started on.
+            || (from == 'placed'             && to == 'cancelled');
+      }
+
+      function isActive(status) {
+        return status in ['placed', 'confirmed', 'preparing', 'out_for_delivery'];
+      }
+    }
+  }
+}

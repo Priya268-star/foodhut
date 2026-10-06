@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Foodhut">
+  <rect width="64" height="64" rx="14" fill="#e11d48" />
+  <path
+    fill="#ffffff"
+    d="M22 46V19h13.4c5.3 0 8.9 3.1 8.9 7.9 0 3.4-1.9 5.9-4.9 7l5.9 12.1h-6.9l-5.2-11h-4.6v11H22zm6.6-16.4h6.1c2.2 0 3.6-1.2 3.6-3.1s-1.4-3-3.6-3h-6.1v6.1z"
+  />
+</svg>

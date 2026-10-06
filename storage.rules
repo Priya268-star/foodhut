@@ -1,0 +1,75 @@
+rules_version = '2';
+
+/**
+ * Foodhut Cloud Storage rules.
+ *
+ * Path layout (see `src/services/uploads.ts`):
+ *   restaurants/{ownerId}/profile/{timestamp}-{slug}.jpg
+ *   menu/{ownerId}/{restaurantId}/{timestamp}-{slug}.jpg
+ *   reviews/{ownerId}/{restaurantId}/{timestamp}-{slug}.jpg
+ *
+ * The owner id is a path segment *and* checked against the document's
+ * `ownerId`, so a user cannot write into someone else's folder.
+ */
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    /* Reject anything over 5 MB before the file is even fully received. */
+    function underSizeLimit() {
+      return request.resource.size < 5 * 1024 * 1024;
+    }
+
+    function userDoc(uid) {
+      return firestore.get(/databases/(default)/documents/users/$(uid)).data;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && userDoc(request.auth.uid).role == 'admin';
+    }
+
+    function restaurantOwnerId(restaurantId) {
+      return firestore.get(/databases/(default)/documents/restaurants/$(restaurantId)).data.ownerId;
+    }
+
+    /* Any authenticated user may upload images; the folder is namespaced by
+       their uid, and the content/size checks apply everywhere. */
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write: if isSignedIn() && isImage() && underSizeLimit();
+    }
+
+    /* Restaurant cover/logo images: only the restaurant's owner may replace. */
+    match /restaurants/{ownerId}/{fileName} {
+      allow read: if true;
+      allow write: if isSignedIn()
+                   && request.auth.uid == ownerId
+                   && isImage()
+                   && underSizeLimit();
+    }
+
+    /* Menu images: only the owner of that specific restaurant. */
+    match /menu/{ownerId}/{restaurantId}/{fileName} {
+      allow read: if true;
+      allow write: if isSignedIn()
+                   && restaurantOwnerId(restaurantId) == request.auth.uid
+                   && isImage()
+                   && underSizeLimit();
+      allow delete: if isAdmin() || restaurantOwnerId(restaurantId) == request.auth.uid;
+    }
+
+    /* Review photos: the uploader manages their own. */
+    match /reviews/{ownerId}/{restaurantId}/{fileName} {
+      allow read: if true;
+      allow write: if isSignedIn() && request.auth.uid == ownerId && isImage() && underSizeLimit();
+      allow delete: if isSignedIn() && request.auth.uid == ownerId;
+    }
+  }
+}

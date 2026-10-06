@@ -1,0 +1,88 @@
+# ---------------------------------------------------------------------------
+# Foodhut - ignore rules
+#
+# The guiding rule: a clone of this repository must be enough to run and deploy
+# the site, and must never contain anything that should not be published.
+# `public/dishes/` is therefore committed (the site cannot be deployed without
+# it) while build output, caches and every form of local secret are not.
+# ---------------------------------------------------------------------------
+
+# --- Dependencies and build output -----------------------------------------
+node_modules
+dist
+dist-ssr
+build
+.vite
+*.tsbuildinfo
+
+# --- Environment / secrets --------------------------------------------------
+# `.env.local` holds a real Firebase web config. `.env.example` is the
+# documented template and IS committed, hence the negation below.
+.env
+.env.local
+.env.*.local
+*.local
+!.env.example
+
+# Service-account keys can create real Firebase Auth users and write any
+# document, bypassing the security rules entirely. Never commit one.
+service-account.json
+*-service-account.json
+*firebase-adminsdk*.json
+*.pem
+*.key
+
+# --- Firebase CLI -----------------------------------------------------------
+# `.firebaserc` is committed on purpose: it pins the default project so a fresh
+# clone deploys to the right place. The caches and debug logs below are not.
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+database-debug.log
+pubsub-debug.log
+.runtimeconfig.json
+# firebase.json is deliberately NOT ignored: it carries the hosting rewrites,
+# cache headers and security-rule paths, so a clone could not deploy without it.
+
+# --- Test and tooling artefacts ---------------------------------------------
+coverage
+.nyc_output
+.eslintcache
+*.lcov
+
+# Playwright CLI writes snapshots and ad-hoc screenshots per run.
+.playwright-cli/
+shots/
+
+# `drop-photos/` holds a README explaining how to supply your own photography.
+# The README is documentation and is committed; the images a developer drops in
+# are working files that would bloat the repository and duplicate public/dishes/.
+drop-photos/*
+!drop-photos/README.md
+
+# --- Editor and OS ----------------------------------------------------------
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.sw?
+*.suo
+*.user
+*.ntvs*
+*.njsproj
+*.sln
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+
+# --- Logs -------------------------------------------------------------------
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*

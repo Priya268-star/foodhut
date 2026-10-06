@@ -1,0 +1,12 @@
+# Firebase CLI
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+database-debug.log*
+pubsub-debug.log*
+
+# Local secrets
+service-account.json
+*-service-account.json
+.runtimeconfig.json
